@@ -19,9 +19,9 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   }, [products]);
 
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = products.filter(product => {
+    const filtered = products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           product.description.toLowerCase().includes(searchTerm.toLowerCase());
+      product.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
